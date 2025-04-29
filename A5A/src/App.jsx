@@ -5,7 +5,7 @@ import LoginView from './views/LoginView';
 import RegisterView from './views/RegisterView';
 import MoviesView from './views/MoviesView';
 import ErrorView from './views/ErrorView';
-import MovieTileView from './views/MovieTileView';
+import GenreLogin from './views/GenreView';
 import DetailView from './views/DetailView';
 
 
@@ -18,10 +18,10 @@ function App() {
         <Route path="/login" element={<LoginView />} />
         <Route path="/register" element={<RegisterView />} />
         <Route path="/movies" element={<MoviesView />}>
-          <Route path="now_playing" element={<MovieTileView />}></Route>
-          <Route path="popular" element={<MovieTileView />}></Route>
-          <Route path="top_rated" element={<MovieTileView />}></Route>
-          <Route path="upcoming" element={<MovieTileView />}></Route>
+          <Route path="now_playing" element={<GenreLogin />}></Route>
+          <Route path="popular" element={<GenreLogin />}></Route>
+          <Route path="top_rated" element={<GenreLogin />}></Route>
+          <Route path="upcoming" element={<GenreLogin/>}></Route>
           <Route path=":id" element={<DetailView />}></Route>
           </Route>
         

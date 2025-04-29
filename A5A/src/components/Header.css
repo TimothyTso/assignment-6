@@ -2,8 +2,6 @@
     /* Margin zeroes */
     margin:0px;
     padding:0px;
-    background:radial-gradient(rgb(4, 0, 53),rgb(0, 0, 0));
-    /* Background gradient to make it look a bit nicer */
 }
 .menu{
     /* Creates menu container */
@@ -16,27 +14,32 @@
 }
 .title{
     /* Logo title */
-    position:absolute;
+    position:relative;
     margin-top:0px;
     font-size:200%;
     color:red;
     display:inline-block;
 }
-.buttonl{
+.buttons{
+    /* Button container */
+    width:5%;
+    display:inline-flex;
+    margin-left:77%;
+}
+.login{
     /* Login button */
     margin-top:0%;
-    margin-left:50%;
     position:relative;
-    background-color:rgb(133, 133, 244);
+    background-color:rgb(134, 134, 240);
     border-radius:100%;
     border:none;
     padding: 5px 15px;
 }
-.buttonl:hover{
+.login:hover{
     /* Login button color change */
     background-color:white;
 }
-.buttonr{
+.register{
     /* Register button */
     margin-top:0%;
     margin-left:10%;
@@ -47,7 +50,7 @@
     padding: 5px 15px;
     
 }
-.buttonr:hover{
+.register:hover{
     /* Register button color change*/
     background-color:white;
 }
