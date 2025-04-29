@@ -7,7 +7,8 @@ export default function RegisterView() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/movies/now_playing');
+    
+    navigate('/Login');
   };
 
   return (
@@ -16,10 +17,19 @@ export default function RegisterView() {
         <h2 className="register-title">Register</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
-            <label className="form-label">Name</label>
+            <label className="form-label">First Name</label>
             <input
               type="text"
-              name="name"
+              name="name1"
+              className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Last Name</label>
+            <input
+              type="text"
+              name="name2"
               className="form-input"
               required
             />
@@ -35,6 +45,15 @@ export default function RegisterView() {
           </div>
           <div className="form-group">
             <label className="form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Re-Enter Password</label>
             <input
               type="password"
               name="password"

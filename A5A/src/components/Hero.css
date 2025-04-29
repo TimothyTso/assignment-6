@@ -2,17 +2,18 @@
     /* Margin zeroes */
     margin:0px;
     padding:0px;
+    
 }
 .body{
     background:black;
 }
 .description{
     /* Hero section */
-    height:700px;
-    position:relative;
-    background:url(Background.jpg);
-    background-size:100%;
-    opacity:0.3;
+    height: 700px;
+    position: relative;
+    background: url(Background.jpg);
+    background-size: 100%;
+    opacity: 0.3;
     /* Transparency for visibility reasons */
 }
 .boxdescript{
