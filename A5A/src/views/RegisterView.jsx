@@ -4,12 +4,12 @@ import "./RegisterView.css";
 export default function RegisterView() {
 
   const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    navigate('/Login');
-  };
+   
+      navigate('/Login');
+    }
+  
 
   return (
     <div className="register-container">
@@ -47,7 +47,7 @@ export default function RegisterView() {
             <label className="form-label">Password</label>
             <input
               type="password"
-              name="password"
+              name="password1"
               className="form-input"
               required
             />
@@ -56,7 +56,7 @@ export default function RegisterView() {
             <label className="form-label">Re-Enter Password</label>
             <input
               type="password"
-              name="password"
+              name="password2"
               className="form-input"
               required
             />

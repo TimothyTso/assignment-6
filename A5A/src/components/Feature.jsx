@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 
 function Feature() {
-    console.log(5);
     const [movies, setMovies] = useState([]);
     const randmovie = Math.floor(Math.random() * 12);
     const randpage = Math.floor(Math.random() * 20);

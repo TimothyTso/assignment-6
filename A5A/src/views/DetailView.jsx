@@ -8,8 +8,7 @@ import Footer from "./../components/Footer.jsx";
 function DetailMovieView() {
   const [movie, setMovie] = useState([]);
   const params = useParams();
-  const [page, setPage] = useState(1);
-
+ 
   useEffect(() => {
     (async function getMovie() {
       const response = await axios.get(
