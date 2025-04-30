@@ -4,16 +4,16 @@ import React, { useState, useEffect } from 'react';
 
 function Feature() {
     const [movies, setMovies] = useState([]);
-    const randmovie = Math.floor(Math.random() * 12);
-    const randpage = Math.floor(Math.random() * 20);
-    const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=` + randpage;
+    const randMovie = Math.floor(Math.random() * 12);
+    const randPage = Math.floor(Math.random() * 20);
+    const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=` + randPage;
 
     useEffect(() => {
         const fetchMovies = async () => {
             try {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
-                setMovies(data.results.slice(randmovie, randmovie + 4)); // random movie then next six
+                setMovies(data.results.slice(randMovie, randMovie + 4)); // random movie then next six
             } catch (error) {
                 setError('Failed to fetch movies');
             }};
