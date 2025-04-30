@@ -19,9 +19,6 @@ function App() {
         <Route path="/register" element={<RegisterView />} />
         <Route path="/movies" element={<MoviesView />}>
           <Route path="now_playing" element={<GenreLogin />}></Route>
-          <Route path="popular" element={<GenreLogin />}></Route>
-          <Route path="top_rated" element={<GenreLogin />}></Route>
-          <Route path="upcoming" element={<GenreLogin/>}></Route>
           <Route path=":id" element={<DetailView />}></Route>
           </Route>
         

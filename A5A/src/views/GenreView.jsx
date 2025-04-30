@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "./../components/Header.jsx";
 import Genres from "./../components/Genres.jsx";
-
+import Footer from "./../components/Footer.jsx";
 function GenreLogin() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
@@ -13,8 +13,8 @@ function GenreLogin() {
   useEffect(() => {
     const fetchMovies = async () => {
       const url = selectedGenreId
-        ? `https://api.themoviedb.org/3/discover/movie?api_key=be3c7266366ad88b56a8397a0a3e668d&with_genres=${selectedGenreId}`
-        : `https://api.themoviedb.org/3/discover/movie?api_key=be3c7266366ad88b56a8397a0a3e668d&with_genres=28`;
+        ? `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=${selectedGenreId}`
+        : `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=28`;
 
       const response = await axios.get(url);
       setMovies(response.data.results);
@@ -25,7 +25,7 @@ function GenreLogin() {
 
   async function getMoviesByPage(page) {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=be3c7266366ad88b56a8397a0a3e668d&with_genres=${selectedGenreId}&page=${page}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=${selectedGenreId}&page=${page}`
     );
     setMovies(response.data.results);
   }
@@ -35,16 +35,16 @@ function GenreLogin() {
   }
 
   const genres = [
-    { genre: "Action", id: 28 },
+    { genre: "War", id: 10752 },
     { genre: "Animation", id: 16 },
-    { genre: "Comedy", id: 35 },
-    { genre: "Family", id: 10751 },
-    { genre: "History", id: 36 },
+    { genre: "Thriller", id: 53 },
     { genre: "Horror", id: 27 },
+    { genre: "History", id: 36 },
+    { genre: "Family", id: 10751 },
     { genre: "Music", id: 10402 },
     { genre: "Science Fiction", id: 878 },
-    { genre: "Thriller", id: 53 },
-    { genre: "War", id: 10752 },
+    { genre: "Comedy", id: 35 },
+    { genre: "Action", id: 28 },
     { genre: "Western", id: 37 },
   ];
 
@@ -74,11 +74,11 @@ function GenreLogin() {
                   setPage(page + 1), getMoviesByPage(page + 1)
                 }
               }}>Next Page</a></p>
-              <p>Page {page}<br/></p>
+              
           </div>
         </div>
         <div className="genredisp">
-          {movies.map((movie) => (
+          {movies.slice(0,8).map((movie) => (
             <div
               key={movie.id}
               className="moviecard"
@@ -101,7 +101,9 @@ function GenreLogin() {
           ))}
         </div>
       </div>
-      
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }

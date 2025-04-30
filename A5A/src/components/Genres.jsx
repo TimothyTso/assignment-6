@@ -1,5 +1,4 @@
 import './../components/Genres.css';
-
 function GenreView({ genresList, onGenreClick }) {
   return (
     <div className="genretag">
