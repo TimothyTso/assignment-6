@@ -6,8 +6,13 @@ export default function RegisterView() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-   
-      navigate('/Login');
+    let pass = (1);
+
+   if (pass === 1){
+    navigate('/Login');
+  } else{
+    alert("enter the same password dummy");
+  }
     }
   
 
