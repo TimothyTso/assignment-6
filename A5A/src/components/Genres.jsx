@@ -2,10 +2,12 @@ import './../components/Genres.css';
 function GenreView({ genresList, onGenreClick }) {
   return (
     <div className="genretag">
-      {genresList.map((genre) => (
-        <ul><li key={genre.id} onClick={() => onGenreClick(genre.id)}>
-          {genre.genre}
-        </li></ul>
+      {genresList.map(([id, name]) => (
+        <ul key={id}>
+          <li onClick={() => onGenreClick(id)}>
+            {name}
+          </li>
+        </ul>
       ))}
     </div>
   )

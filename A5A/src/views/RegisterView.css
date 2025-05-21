@@ -1,4 +1,31 @@
+.genre-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
 
+.genre-column {
+  flex: 1;
+  min-width: 150px;
+}
+
+.h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #c7c6c6;
+  text-align: center;
+  padding-right: 30px;
+}
+.label{
+  color: #c7c6c6;
+}
+.genres-columns {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
 .register-container {
     display: flex;
     justify-content: center;

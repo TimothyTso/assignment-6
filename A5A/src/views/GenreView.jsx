@@ -1,15 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Header from "./../components/Header.jsx";
+import { useStoreContext } from '../context';
+import Header from "./../components/HeaderLog.jsx";
 import Genres from "./../components/Genres.jsx";
 import Footer from "./../components/Footer.jsx";
+import { useParams } from 'react-router-dom';
+
 function GenreLogin() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
-  const [selectedGenreId, setSelectedGenreId] = useState(28);
+  const { genre_id } = useParams();
+  const [selectedGenreId, setSelectedGenreId] = useState(Number(genre_id) || 28);
   const navigate = useNavigate();
-
+  const { cart, fname, addToCart, genres } = useStoreContext();
+  
+  const cartAdd = (movie) => {
+    if (cart.has(movie.id)) {
+      alert("This movie is already in your cart.");
+    } else {
+      addToCart(movie);
+    }
+  };
   useEffect(() => {
     const fetchMovies = async () => {
       const url = selectedGenreId
@@ -22,6 +34,11 @@ function GenreLogin() {
 
     fetchMovies();
   }, [selectedGenreId]);
+  useEffect(() => {
+  if (genre_id) {
+    setSelectedGenreId(Number(genre_id));
+  }
+}, [genre_id]);
 
   async function getMoviesByPage(page) {
     const response = await axios.get(
@@ -34,22 +51,11 @@ function GenreLogin() {
     navigate(`/movies/${id}`);
   }
 
-  const genres = [
-    { genre: "War", id: 10752 },
-    { genre: "Animation", id: 16 },
-    { genre: "Thriller", id: 53 },
-    { genre: "Horror", id: 27 },
-    { genre: "History", id: 36 },
-    { genre: "Family", id: 10751 },
-    { genre: "Music", id: 10402 },
-    { genre: "Science Fiction", id: 878 },
-    { genre: "Comedy", id: 35 },
-    { genre: "Action", id: 28 },
-    { genre: "Western", id: 37 },
-  ];
+  
 
   const handleGenreClick = (genreId) => {
     setSelectedGenreId(genreId);
+    navigate(`/movies/genre/${genreId}`);
   };
 
   return (
@@ -59,7 +65,7 @@ function GenreLogin() {
       </div>
       <div className="loginfeat">
         <div className="genrelist">
-          <Genres genresList={genres} onGenreClick={handleGenreClick} />
+          <Genres genresList={Array.from(genres)} onGenreClick={handleGenreClick} />
           <div className="spacer">
           </div>
           <div className="pageturner">
@@ -79,6 +85,7 @@ function GenreLogin() {
         </div>
         <div className="genredisp">
           {movies.slice(0,8).map((movie) => (
+            <div>
             <div
               key={movie.id}
               className="moviecard"
@@ -92,11 +99,14 @@ function GenreLogin() {
                 className="movieposter"
               />
               <h3>{movie.title}</h3>
-              <div className="detailbut">
-                <Link to={`/movies/` + movie.id} className="dbutton">
-                  Details
-                </Link>
-              </div>
+            </div>
+            
+              <button 
+              className="butt"
+              onClick={() => cartAdd(movie)}>
+                {cart.has(movie.id) ? "Added" : "Buy"}
+              </button>
+              
             </div>
           ))}
         </div>

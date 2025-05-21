@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./DetailView.css"
-import Header from "./../components/Header.jsx";
+import Header from "./../components/HeaderLog.jsx";
 import Footer from "./../components/Footer.jsx";
 
 function DetailMovieView() {
