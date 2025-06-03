@@ -1,13 +1,24 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useStoreContext } from '../context';
 import "./LoginView.css";
 
 export default function LoginView() {
 
   const navigate = useNavigate();
+  const { email: contextEmail, password: contextPassword } = useStoreContext();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/movies/genre');
+    if (email === contextEmail && password === contextPassword) {
+      navigate('/movies/genre');
+    } else {
+      alert("Incorrect email or password.");
+      console.log(email, password, contextEmail, contextPassword);
+    }
   };
 
   return (
@@ -20,8 +31,10 @@ export default function LoginView() {
             <input
               type="email"
               name="email"
+              value={email}
               className="form-input"
               required
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -29,7 +42,9 @@ export default function LoginView() {
             <input
               type="password"
               name="password"
+              value={password}
               className="form-input"
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>

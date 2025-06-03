@@ -27,10 +27,8 @@ function Header() {
     [navigate]
   );
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+  const handleKeyDown = (event) => { 
       handleSearch(message);
-    }
   };
 
   return (
