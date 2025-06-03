@@ -47,9 +47,9 @@ export default function RegisterView() {
   
 
    if (pass != pass2){
-    alert("enter the same password dummy");
+    alert("passwords do not match");
   }else if (selectedGenres.size<5){
-    alert("select more you bomboclat");
+    alert("select atleast 5 genres");
   }else{
     navigate('/movies/genre');
     setFirst(user);
